@@ -7,7 +7,7 @@ package calcsolve;
 
 import java.util.Arrays;
 import java.util.Collections;
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane; 
 
 /**
  *
@@ -196,6 +196,13 @@ public class frameStat extends javax.swing.JFrame {
             for (int i = 0; i < list1.length; i++) {
                 num[i] = Integer.parseInt(list1[i]);
             }
+            double length = num.length;
+            double sum = 1;
+            for (int i = 0; i < num.length; i++) {
+                sum *= num[i];
+            }
+            double answer = Math.pow( sum, 1/length);
+            JOptionPane.showMessageDialog(this, "Geometric Mean: " + answer);
 
         } else {
             JOptionPane.showMessageDialog(this, "Enter your values.");
@@ -211,12 +218,13 @@ public class frameStat extends javax.swing.JFrame {
             for (int i = 0; i < list1.length; i++) {
                 num[i] = Integer.parseInt(list1[i]);
             }
-            int length = num.length;
-            int sum = 0;
+            double length = num.length;
+            double sum = 0;
             for (int i = 0; i < num.length; i++) {
                 sum += num[i];
             }
-            JOptionPane.showMessageDialog(this, "Mean: " + (sum / length));
+            double mean = sum / length;
+            JOptionPane.showMessageDialog(this, "Mean: " + mean);
         } else {
             JOptionPane.showMessageDialog(this, "Enter your values.");
         }
@@ -339,7 +347,20 @@ public class frameStat extends javax.swing.JFrame {
             for (int i = 0; i < list1.length; i++) {
                 num[i] = Integer.parseInt(list1[i]);
             }
+            double length = num.length;
+            double sum = 0;
+            for (int i = 0; i < num.length; i++) {
+                sum += num[i];
+            }
+            double mean = sum / length;
+            double total = 0;
+            for (int i = 0; i < num.length; i++) {
+                total += Math.pow((double)num[i] - mean,2);
+            }
             
+            double answer = Math.sqrt(total/(length-1));
+            
+            JOptionPane.showMessageDialog(this, "Standard Deviation: " + answer);
             
             
         } else {
